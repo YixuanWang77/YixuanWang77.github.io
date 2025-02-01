@@ -1,7 +1,7 @@
-console.log("JavaScript file successfully linked!");
+console.log("Welcome to my website");
 
-document.title = "This is My Website";
+let now = new Date();
+console.log("Current time:", now.toLocaleTimeString());
 
-document.addEventListener("click", function(event) {
-    console.log("User clicked at X:", event.clientX, "Y:", event.clientY);
-});
+console.log("Window Width:", window.innerWidth);
+console.log("Window Height:", window.innerHeight);
