@@ -1,23 +1,10 @@
 function setup() {
-    let canvas = createCanvas(windowWidth, windowHeight);
-    background(240);
-    frameRate(60);
+    createCanvas(1920, 1080);
+    console.log("Canvas created with size 1920x1080");
 }
-
 function draw() {
-    if (frameCount % 30 === 0) { 
-        background(240); 
-    }
-
-    for (let x = 20; x < width; x += 40) {
-        for (let y = 20; y < height; y += 40) {
-            fill(random(255), random(255), random(255)); 
-            noStroke();
-            ellipse(x, y, 20, 20);
-        }
-    }
-
-    fill(255, 0, 0);
-    stroke(0);
-    ellipse(mouseX, mouseY, 50, 50);
+    background(178);
+    circle(mouseX,mouseY,20,20);
+    fill(30)
+    console.log("Mouse position:", mouseX, mouseY);
 }
