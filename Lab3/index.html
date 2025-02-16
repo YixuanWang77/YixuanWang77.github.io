@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 3 - Graphical User Interface</title>
+<script src="p5.min.js"></script>
+<script src="sketch.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .controls {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lab 3 - GUI</h1>
+    <div class="controls">
+        <label for="bgColor">Background Color:</label>
+        <input type="color" id="bgColor" value="#808080">
+        <br><br>
+        <label for="slider">Shape Size:</label>
+        <input type="range" id="slider" min="10" max="100" value="50">
+    </div>
+</body>
+</html>
