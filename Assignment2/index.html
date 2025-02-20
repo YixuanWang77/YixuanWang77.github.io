@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Citing Code</title>
+    <script src="p5.min.js"></script>
+    <script src="sketch.js"></script>
+    <script src="script.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .control-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        label {
+            width: 150px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        input, button {
+            width: 200px;
+            padding: 5px;
+            margin-left: 10px;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            font-size: 14px;
+            border-radius: 5px;
+            padding: 8px 12px;
+            
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Canvas</h1>
+    <p>Use your mouse to draw. Press key 1 for Circle, 2 for Rectangle, 3 for Triangle, 4 for Line to switch shapes.</p>
+    <div class="controls">
+        <label for="colorPicker">Select Color:</label>
+        <input type="color" id="colorPicker" value="#000000">
+        <br><br>
+
+        <label for="bgColorPicker">Background Color:</label>
+        <input type="color" id="bgColorPicker" value="#FFFFFF">
+        <br><br>
+
+        <label for="sizeSlider">Shape Size:</label>
+        <input type="range" id="sizeSlider" min="10" max="100" value="50">
+        <br><br>
+
+        <label for="strokeWeightSlider">Stroke Weight:</label>
+        <input type="range" id="strokeWeightSlider" min="1" max="10" value="2">
+        <br><br>
+
+        <button id="clearButton">Clear Canvas</button>
+        <br><br>
+
+        <button id="eraserButton">Toggle Eraser</button>
+        <br><br>
+
+        <label for="eraserSizeSlider"> Eraser Size:</label>
+        <input type="range" id="eraserSizeSlider" min="10" max="100" value="30">
+        <br><br>
+    </div>
+</body>
+</html>
