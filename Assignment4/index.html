@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>P5 + Arrays</title> 
+    <script src="p5.min.js"></script>
+    <script src="sketch.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: white;
+        }
+        button, input {
+            font-size: 16px;
+            margin: 10px;
+            padding: 8px
+        }
+        h1 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click Anywhere Smoke Particles</h1>
+    <div class="container">
+        <button id="spawnParticles">Spawn Particles</button>
+        <input type="range" id="particleSpeed" min="1" max="20" value="5">
+        <label for="particleSpeed">Particle Speed</label>
+    </div>
+</body>
+</html>
