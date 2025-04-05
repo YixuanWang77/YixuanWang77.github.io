@@ -3,7 +3,6 @@
 let fruitData;
 
 function preload() {
-  // 引用 P5.js 的 loadJSON 方法
   fruitData = loadJSON("fruits.json");
 }
 
