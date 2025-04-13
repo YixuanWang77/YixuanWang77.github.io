@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Daily Mood Entry</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    .form-group {
+      margin: 15px 0;
+    }
+    input, textarea, button {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    textarea {
+      width: 300px;
+      height: 80px;
+    }
+    button {
+      background-color: royalblue;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: darkblue;
+    }
+  </style>
+</head>
+<body>
+  <h1>🐾 Daily Mood Tracker</h1>
+    <form>
+      <!-- Date Picker -->
+      <label for="date">Choose Date:</label>
+      <input type="date" id="date" value="">
+      <br><br>
+
+      <!-- Emoji Selector -->
+      <label for="mood">Today's Mood:</label>
+      <select id="mood">
+        <option value="😊">😊 Happy</option>
+        <option value="😔">😔 Sad</option>
+        <option value="😡">😡 Angry</option>
+        <option value="😐">😐 Meh</option>
+        <option value="😴">😴 Tired</option>
+      </select>
+  
+      <!-- Optional Note -->
+      <br><br>
+      <label for="note">Add a note:</label>
+      <input type="text" id="note" placeholder="Write something...">
+  
+      <br><br>
+      <button type="button" onclick="saveMood()">Save Mood</button>
+    </form>
+  <p><a href="calendar.html">📆 View Calendar</a></p>
+
+  <script src="form.js"></script>
+</body>
+</html>

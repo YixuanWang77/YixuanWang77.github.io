@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Mood Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    .controls {
+      margin: 10px;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .day {
+      background: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      min-height: 60px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .day:hover .tooltip {
+      display: block;
+    }
+
+    .date {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .emoji {
+      font-size: 20px;
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: #333;
+      color: #fff;
+      font-size: 12px;
+      padding: 4px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    .nav-btn {
+      margin: 0 10px;
+      padding: 6px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .month-label {
+      font-size: 20px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .clear-btn {
+      margin-top: 15px;
+      padding: 6px 12px;
+      background: crimson;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📆 Mood Calendar</h1>
+
+    <div class="controls">
+      <button class="nav-btn" onclick="changeMonth(-1)">← Previous</button>
+      <span id="monthLabel" class="month-label"></span>
+      <button class="nav-btn" onclick="changeMonth(1)">Next →</button>
+    </div>
+
+    <div id="calendar" class="calendar"></div>
+
+    <button class="clear-btn" onclick="clearAllData()">🗑 Clear All Data</button>
+    <p><a href="index.html">← Back</a></p>
+  </div>
+
+  <script>
+    const container = document.getElementById("calendar");
+    const monthLabel = document.getElementById("monthLabel");
+
+    let current = new Date();
+    let currentMonth = current.getMonth();
+    let currentYear = current.getFullYear();
+
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    function getMoodData() {
+      return JSON.parse(localStorage.getItem("moods") || "{}");
+    }
+
+    function renderCalendar(year, month) {
+      container.innerHTML = "";
+      monthLabel.textContent = `${monthNames[month]} ${year}`;
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const data = getMoodData();
+
+      for (let i = 0; i < firstDay; i++) {
+        const blank = document.createElement("div");
+        container.appendChild(blank);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const moodEntry = data[dateStr];
+
+        const cell = document.createElement("div");
+        cell.className = "day";
+        cell.innerHTML = `
+          <div class="date">${day}</div>
+          <div class="emoji">${moodEntry ? moodEntry.mood : ""}</div>
+          ${moodEntry?.note ? `<div class="tooltip">${moodEntry.note}</div>` : ""}
+        `;
+        container.appendChild(cell);
+      }
+    }
+
+    function changeMonth(offset) {
+      currentMonth += offset;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      } else if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      renderCalendar(currentYear, currentMonth);
+    }
+
+    function clearAllData() {
+        localStorage.clear("moods");
+        renderCalendar(currentYear, currentMonth);
+        alert("All records have been cleared.");
+      }
+
+    renderCalendar(currentYear, currentMonth);
+  </script>
+</body>
+</html>
